@@ -1,0 +1,35 @@
+#include <stdio.h>
+
+int main() {
+    int engine_hours = 0;
+    int maintenance_threshold = 50;
+    int hours_flown;
+    char reset_choice;
+
+    printf("Aircraft Engine Maintenance Tracker\n");
+    printf("-----------------------------------\n");
+
+    while (1) {
+        printf("\nEnter the number of hours flown since the last maintenance check: ");
+        scanf("%d", &hours_flown);
+
+        engine_hours += hours_flown;
+
+        if (engine_hours >= maintenance_threshold) {
+            printf("Maintenance required! Engine hours: %d\n", engine_hours);
+            printf("Would you like to reset the engine hours? (y/n): ");
+            scanf(" %c", &reset_choice);
+
+            if (reset_choice == 'y' || reset_choice == 'Y') {
+                engine_hours = 0;
+                printf("Engine hours have been reset to zero.\n");
+            } else {
+                printf("Engine hours not reset. Current engine hours: %d\n", engine_hours);
+            }
+        } else {
+            printf("No maintenance required yet. Current engine hours: %d\n", engine_hours);
+        }
+    }
+
+    return 0;
+}
